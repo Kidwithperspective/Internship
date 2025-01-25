@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bucket List</title>
+    <style>
+        body {
+            background-color: rgb(248, 243, 236);
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #737070;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 90%;
+        }
+
+        .bucket-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .bucket-list li {
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .bucket-list li::before {
+            font-family: "Font Awesome 6 Free";
+            content: "\f111";  
+            font-weight: 400;
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .bucket-list li.completed {
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+
+        .bucket-list li.completed::before {
+            content: "\f005";  
+            font-weight: 900;
+            color: #FFD700;  
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+        }
+
+        @media screen and (max-width: 768px) {
+            header {
+                padding: 1.5rem;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            main {
+                padding: 1.5rem;
+            }
+
+            .bucket-list li {
+                padding: 0.8rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            header {
+                padding: 1rem;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            .bucket-list li {
+                padding: 0.7rem;
+                font-size: 0.9rem;
+            }
+
+            .bucket-list li::before {
+                font-size: 1rem;
+            }
+
+            footer {
+                padding: 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>KRISH'S BUCKET LIST </h1>
+        <p>Adventures I want to experience in my lifetime</p>
+    </header>
+
+    <main>
+        <ul class="bucket-list">
+            <li class="completed">A trip to spain with the "Three Musketeers"</li>
+            <li>Learn to play guitar</li>
+            <li class="completed">Read all Dostoevsky's books</li>
+            <li>Achive the Goal Physique</li>
+            <li>Start my own Photography Brand</li>
+        </ul>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Bucket List | Created with ❤️</p>
+    </footer>
+</body>
+</html>
