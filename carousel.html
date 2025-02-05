@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<style>
+    body{
+        background: #000;
+    }
+    .slider-container {
+        position: relative;
+        max-width: 1200px;
+        margin: 2rem auto;
+        overflow: hidden;
+        height: 600px;
+        padding: 0 60px;
+    }
+
+    .slider {
+        display: flex;
+        position: relative;
+        height: 100%;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        transform: none !important;
+    }
+
+    .slide {
+        position: relative;
+        min-width: 300px;
+        height: 500px;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: scale(0.85);
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    .slide.active {
+        transform: scale(1.1);
+        opacity: 1;
+        z-index: 2;
+        pointer-events: auto;
+    }
+
+    .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .slide-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 2rem;
+        background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        color: white;
+        text-align: center;
+    }
+
+    .slide-content h2 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+    }
+
+    .slide-content p {
+        font-size: 1.1rem;
+        margin: 0.3rem 0;
+    }
+
+    .slider-nav {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+        z-index: 2;
+        padding: 0 0px;
+    }
+
+    .nav-button {
+        background: rgba(0, 0, 0, 0.7);
+        border: none;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        transition: background 0.3s;
+        z-index: 10;
+    }
+
+    .nav-button:hover {
+        background: rgba(0, 0, 0, 0.9);
+    }
+
+    /* Responsive adjustments */
+    @media screen and (max-width: 1024px) {
+        .slider-container {
+            padding: 0 50px;
+        }
+        
+        .slide {
+            min-width: 250px;
+            height: 400px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .slider-container {
+            padding: 0 40px;
+        }
+        
+        .slide {
+            min-width: 200px;
+            height: 350px;
+        }
+
+        .slide-content h2 {
+            font-size: 1.5rem;
+        }
+
+        .slide-content p {
+            font-size: 0.9rem;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .slider-container {
+            padding: 0 35px;
+        }
+        
+        .slide {
+            min-width: 180px;
+            height: 300px;
+        }
+    }
+</style>
+
+<main>
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1587595431973-160d0d94add1?q=80" alt="Machu Picchu">
+                <div class="slide-content">
+                    <h2>Machu Picchu</h2>
+                    <p>PERU</p>
+                    <p>Adventure is never far away</p>
+                </div>
+            </div>
+            <div class="slide active">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80" alt="Mountain View">
+                <div class="slide-content">
+                    <h2>Mountains</h2>
+                    <p>NEPAL</p>
+                    <p>Discover new heights</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1491904768633-2b7e3e7fede5?q=80" alt="Mountain Peak">
+                <div class="slide-content">
+                    <h2>Peaks</h2>
+                    <p>SWITZERLAND</p>
+                    <p>Touch the sky</p>
+                </div>
+            </div>
+        </div>
+        <div class="slider-nav">
+            <button class="nav-button prev">❮</button>
+            <button class="nav-button next">❯</button>
+        </div>
+    </div>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    let currentIndex = 1; // Start with middle slide active
+
+    function updateSlides() {
+        slides.forEach((slide, index) => {
+            if (index === currentIndex) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.remove('active');
+            }
+        });
+    }
+
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlides();
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex < slides.length - 1) {
+            currentIndex++;
+            updateSlides();
+        }
+    });
+
+    // Initialize the slider
+    updateSlides();
+});
+</script>
+</body>
+</html>
